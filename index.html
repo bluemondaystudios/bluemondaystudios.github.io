@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blue Monday Studios</title>
+<meta name="description" content="Blue Monday Studios — designing learning systems at the intersection of technology and creativity." />
+
+<style>
+/* =========================
+   ROOT VARIABLES
+========================= */
+:root {
+  --blue-main: #0A1A2F;
+  --blue-soft: #142C4C;
+  --yellow-accent: #F2C94C;
+  --bg-light: #F7F9FC;
+  --text-dark: #0B1220;
+  --text-muted: #475569;
+}
+
+/* =========================
+   RESET
+========================= */
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text-dark);
+  background: white;
+  line-height:1.65;
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* =========================
+   HEADER
+========================= */
+.site-header {
+  background:white;
+  border-bottom:1px solid #e5e7eb;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.header-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:72px;
+}
+
+/* Logo with 90-degree accent corner */
+.logo-frame {
+  padding: 0.4rem 0.7rem;
+  border-left: 2px solid var(--yellow-accent);
+  border-bottom: 2px solid var(--yellow-accent);
+  display: inline-flex;
+  align-items: center;
+}
+.logo {
+  font-size:1.6rem;
+  font-weight:700;
+  letter-spacing:0.22em;
+  color:var(--blue-main);
+}
+.logo span { color: var(--yellow-accent); }
+
+/* Hamburger menu for mobile */
+.hamburger {
+  display:none;
+  flex-direction:column;
+  gap:4px;
+  cursor:pointer;
+}
+.hamburger div {
+  width:28px;
+  height:3px;
+  background: var(--blue-main);
+  transition: all 0.3s;
+}
+
+/* Navigation */
+.nav {
+  display:flex;
+  align-items:center;
+}
+.nav a {
+  margin-left:1.5rem;
+  text-decoration:none;
+  color:var(--blue-soft);
+  font-size:0.95rem;
+  transition: color 0.3s;
+}
+.nav a:hover {
+  color:var(--blue-main);
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  background: var(--blue-main);
+  color:white;
+  padding:5.5rem 0;
+}
+
+.hero-container {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  max-width:1100px;
+  margin:0 auto;
+  gap:2rem;
+}
+
+.hero-left {
+  flex:1;
+  min-width:260px;
+}
+.hero-right {
+  flex:1;
+  min-width:200px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:1rem;
+}
+
+.hero-frame {
+  display:inline-block;
+  padding:2.2rem 2.6rem;
+  border:1px solid rgba(255,255,255,0.25);
+  position:relative;
+  max-width:720px;
+}
+.hero-frame::before {
+  content:"";
+  position:absolute;
+  top:-1px;
+  left:-1px;
+  width:48px;
+  height:48px;
+  border-top:3px solid var(--yellow-accent);
+  border-left:3px solid var(--yellow-accent);
+}
+
+.hero h1 {
+  font-size:2.7rem;
+  margin-bottom:1rem;
+}
+.hero-sub {
+  max-width:620px;
+  font-size:1.1rem;
+  opacity:0.9;
+}
+
+/* Hero icons */
+.hero-contact, .hero-social {
+  display:inline-block;
+  opacity:0.15;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.hero-contact:hover, .hero-social:hover {
+  opacity:0.35;
+  transform:scale(1.1);
+}
+.hero-contact svg, .hero-social svg {
+  width:32px;
+  height:32px;
+  stroke: var(--yellow-accent);
+  fill:transparent;
+  stroke-width:1.2;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+.section { padding:4.5rem 0; }
+.section.alt { background:var(--bg-light); }
+
+h2 {
+  font-size:1.95rem;
+  margin-bottom:0.75rem;
+  color:var(--blue-main);
+  position:relative;
+}
+h2::after {
+  content:"";
+  display:block;
+  width:48px;
+  height:3px;
+  background:var(--yellow-accent);
+  margin-top:0.6rem;
+}
+
+.section-lead {
+  max-width:720px;
+  color: var(--text-muted);
+  margin-bottom:2.5rem;
+}
+
+/* =========================
+   GRID / CARDS
+========================= */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1.6rem;
+}
+
+.card {
+  background:white;
+  padding:1.6rem;
+  border:1px solid #e5e7eb;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.card:hover {
+  transform:translateY(-3px);
+  box-shadow:0 10px 24px rgba(0,0,0,0.06);
+}
+.card h3 { margin-bottom:0.5rem; color:var(--blue-soft); }
+
+/* =========================
+   METHOD
+========================= */
+.method {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:2rem;
+}
+.method span { display:inline-block; font-weight:700; color:var(--yellow-accent); margin-bottom:0.4rem; }
+.method h4 { margin-bottom:0.4rem; color:var(--blue-soft); }
+
+/* =========================
+   PEOPLE
+========================= */
+.person { max-width:640px; margin-bottom:1.5rem; }
+
+/* =========================
+   STUDIO DETAILS
+========================= */
+.studio-details { margin-top:4rem; display:flex; flex-direction:column; gap:2.5rem; }
+.studio-lead h2, .studio-projects h3 { color:var(--blue-main); margin-bottom:0.5rem; }
+.studio-lead p { font-weight:500; }
+.studio-projects ul { list-style:none; display:flex; flex-wrap:wrap; gap:1rem; padding:0; }
+.studio-projects li { background: rgba(0,0,0,0.03); padding:0.5rem 1rem; border-radius:4px; }
+.github-link { display:inline-block; vertical-align:middle; opacity:0.5; transition:opacity 0.2s ease, transform 0.2s ease; margin-left:0.5rem; }
+.github-link:hover { opacity:0.8; transform:scale(1.1); }
+.github-link svg { width:20px; height:20px; }
+
+/* =========================
+   CTA / FOOTER
+========================= */
+.cta { display:inline-block; margin-top:1.5rem; padding:0.8rem 1.6rem; background:var(--yellow-accent); color:var(--blue-main); text-decoration:none; font-weight:600; }
+.cta:hover { opacity:0.9; }
+
+.site-footer { background: var(--blue-main); color:white; padding:1.6rem 0; text-align:center; font-size:0.9rem; }
+
+/* =========================
+   ANIMATIONS
+========================= */
+.fade-in { animation: fadeIn 1.2s ease-out; }
+.fade-in-delay { animation: fadeIn 1.2s ease-out 0.3s forwards; opacity:0; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media(max-width:768px){
+  .hero-container { flex-direction:column; align-items:flex-start; gap:1.5rem; }
+  .hero-left, .hero-right { width:100%; }
+  .hero-right { justify-content:flex-start; gap:0.8rem; }
+  .hero h1 { font-size:2rem; }
+  .hero-sub { font-size:1rem; }
+  .grid, .method { grid-template-columns:1fr; }
+
+  /* Hamburger Nav */
+  .hamburger { display:flex; }
+  .nav { 
+    flex-direction:column; 
+    position:absolute; top:72px; left:0; width:100%; background:white; border-top:1px solid #e5e7eb; 
+    max-height:0; overflow:hidden; transition:max-height 0.3s ease;
+  }
+  .nav.open { max-height:500px; padding:1rem 0; }
+  .nav a { margin:0.5rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo-frame">
+      <div class="logo">B<span>.</span>M</div>
+    </div>
+
+    <div class="hamburger" id="hamburger">
+      <div></div><div></div><div></div>
+    </div>
+
+    <nav class="nav" id="nav">
+      <a href="#work">Work</a>
+      <a href="#method">Method</a>
+      <a href="#people">People</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero fade-in">
+  <div class="hero-container container">
+    <div class="hero-left">
+      <div class="hero-frame">
+        <h1>Blue Monday Studios</h1>
+        <p class="hero-sub">
+          Designing learning systems at the intersection of technology and creative intelligence.
+        </p>
+      </div>
+    </div>
+        <div class="hero-right fade-in-delay">
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" class="hero-contact" title="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm3 3h3v10H7V7zm4 0h3v2h.1c.4-.8 1.6-1.5 3-1.5 3 0 3.5 2 3.5 4.6V17h-3v-4c0-1-.1-2.3-1.5-2.3s-1.7 1.2-1.7 2.2V17h-3V7z" stroke="var(--yellow-accent)" fill="transparent" stroke-width="1.2"/></svg>
+      </a>
+
+      <a href="mailto:your@email.com" class="hero-contact" title="Email">
+        <svg viewBox="0 0 24 24"><path d="M2 4h20v16H2V4zm2 2v12h16V6H4zm8 5l8-5H4l8 5z" stroke="var(--yellow-accent)" fill="transparent" stroke-width="1.2"/></svg>
+      </a>
+
+      <a href="https://youtube.com/yourchannel" target="_blank" class="hero-social" title="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M10 8l6 4-6 4V8zM2 4h20v16H2V4z" stroke="var(--yellow-accent)" fill="transparent" stroke-width="1.2"/></svg>
+      </a>
+
+      <a href="https://x.com/yourprofile" target="_blank" class="hero-social" title="X">
+        <svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" stroke="var(--yellow-accent)" fill="transparent" stroke-width="1.2"/></svg>
+      </a>
+
+      <a href="https://facebook.com/yourprofile" target="_blank" class="hero-social" title="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm6 2h2v3h2v2h-2v6h-2v-6H8v-2h2V6z" stroke="var(--yellow-accent)" fill="transparent" stroke-width="1.2"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="section fade-in">
+  <div class="container">
+    <h2>What We Do</h2>
+    <p class="section-lead">
+      We build structured learning environments that develop clarity, discipline, and long-term understanding.
+    </p>
+    <div class="grid">
+      <div class="card">
+        <h3>Mathematics & Logic</h3>
+        <p>Analytical fluency, structured reasoning, and disciplined problem-solving.</p>
+      </div>
+      <div class="card">
+        <h3>Language & Expression</h3>
+        <p>Communication, literacy, and symbolic clarity.</p>
+      </div>
+      <div class="card">
+        <h3>Music Theory & Production </h3>
+        <p>Rhythm, pattern recognition, and creative discipline.</p>
+      </div>
+      <div class="card">
+        <h3>Technology & Software</h3>
+        <p>Full-stack Web development, systems thinking, and digital tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="method" class="section alt fade-in">
+  <div class="container">
+    <h2>Our Method</h2>
+    <p class="section-lead">
+      A systems-oriented approach to learning and development.
+    </p>
+    <div class="method">
+      <div>
+        <span>01</span>
+        <h4>Observe</h4>
+        <p>Understand context, learner needs, and underlying constraints.</p>
+      </div>
+      <div>
+        <span>02</span>
+        <h4>Structure</h4>
+        <p>Design clear frameworks, sequences, and learning paths.</p>
+      </div>
+      <div>
+        <span>03</span>
+        <h4>Apply</h4>
+        <p>Engage through practice, projects, and disciplined execution.</p>
+      </div>
+      <div>
+        <span>04</span>
+        <h4>Reflect</h4>
+        <p>Evaluate outcomes and reinforce long-term understanding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="people" class="section fade-in">
+  <div class="container">
+    <h2>Studio Team</h2>
+    <p class="section-lead">Our Team at Blue Monday Studios is guided by a systems-first philosophy.</p>
+    <p class="person"><strong>Edward Mawela</strong> — Software engineer and founder.</p>
+    <p class="person"><strong>Pontsho Makgata</strong> — Marketing and Social Media Relations administrator.</p>
+    <p class="person"><strong>Errol Matjomane</strong> — Marketing and Social Media Relations administrator.</p>
+  </div>
+</section>
+
+<section class="studio-details container">
+  <div class="studio-lead">
+    <h2>Studio Projects</h2>
+    <div class="studio-projects">
+      <h3>Projects By Us</h3>
+      <ul>
+        <li>
+          SK Events (NPC) Booking System
+          <a href="https://github.com/yourusername/project-alpha" target="_blank" class="github-link" title="GitHub">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1 1.5-.7 1.8-1 .1-.7.4-1 .7-1.3-2.5-.3-5.1-1.2-5.1-5.3 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3 0 0 .9-.3 3 .1a10.3 10.3 0 0 1 5.5 0c2.1-.4 3-.1 3-.1.6 1.5.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.1-2.6 5-5.1 5.3.4.3.7.8.7 1.7v2.5c0 .3.2.6.8.5A10.5 10.5 0 0 0 23.5 12c0-6.3-5.2-11.5-11.5-11.5z" fill="var(--yellow-accent)"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          Makhuduthamaga Local Municipality Website
+          <a href="https://github.com/yourusername/project-beta" target="_blank" class="github-link" title="GitHub">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1 1.5-.7 1.8-1 .1-.7.4-1 .7-1.3-2.5-.3-5.1-1.2-5.1-5.3 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3 0 0 .9-.3 3 .1a10.3 10.3 0 0 1 5.5 0c2.1-.4 3-.1 3-.1.6 1.5.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.1-2.6 5-5.1 5.3.4.3.7.8.7 1.7v2.5c0 .3.2.6.8.5A10.5 10.5 0 0 0 23.5 12c0-6.3-5.2-11.5-11.5-11.5z" fill="var(--yellow-accent)"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section alt">
+  <div class="container">
+    <h2>Get in Touch</h2>
+    <p class="section-lead">We’re always open to discussing new projects or collaborations.</p>
+    <a href="mailto:info@bluemonday.studio" class="cta">Contact Us</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2026 Blue Monday Studios. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute("href"));
+      if(target) target.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  // Hamburger toggle
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.getElementById("nav");
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("open");
+    hamburger.classList.toggle("active");
+  });
+</script>
+
+</body>
+</html>
